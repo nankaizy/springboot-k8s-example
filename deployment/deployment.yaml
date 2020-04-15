@@ -1,0 +1,24 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: demo-springboot
+  namespace: bigops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-springboot
+  template:
+    metadata:
+      labels:
+        app: demo-springboot
+    spec:
+      containers:
+        - name: bigops-springboot
+          image: registry.cn-hangzhou.aliyuncs.com/bigops-repo1/bigops/bigops-springboot:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: regcred
+      restartPolicy: Always
