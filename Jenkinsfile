@@ -24,12 +24,17 @@ node ('master') {
     stage('Push') {
         echo "4.Push Docker Image Stage"
         withCredentials([usernamePassword(credentialsId: 'AliRegistry', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+            
             sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword} registry.cn-hangzhou.aliyuncs.com"
             sh "docker push registry.cn-hangzhou.aliyuncs.com/bigops-repo1/jenkins-demo:latest"
         }
     }
     stage('Deploy') {
+      
         echo "5. Deploy Stage"
+		withKubeConfig([credentialsId: 'eb583be7-8a4a-404f-8d04-d2b65a32e607', serverUrl: 'https://172.31.51.143:6443']) {
+      sh 'kubectl apply -f deployment/deployment.yaml'
+    }
       
        
     }
