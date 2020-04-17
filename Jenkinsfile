@@ -25,7 +25,7 @@ node ('master') {
         echo "4.Push Docker Image Stage"
         withCredentials([usernamePassword(credentialsId: 'AliRegistry', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
             sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword} registry.cn-hangzhou.aliyuncs.com"
-            sh "docker push registry.cn-hangzhou.aliyuncs.com/bigops-repo1/bigops/jenkins-demo:latest"
+            sh "docker push registry.cn-hangzhou.aliyuncs.com/bigops-repo1/jenkins-demo:latest"
         }
     }
     stage('Deploy') {
