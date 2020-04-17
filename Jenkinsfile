@@ -18,7 +18,7 @@ node ('master') {
    
     stage('Build') {
         echo "3.Build Docker Image Stage"
-        
+        sh "pwd"
         sh "docker build -t jenkins-demo:latest ."
     }
     stage('Push') {
