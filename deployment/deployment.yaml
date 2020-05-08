@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: bigops-springboot
-          image: registry.cn-hangzhou.aliyuncs.com/bigops-repo1/bigops/bigops-springboot:latest
+          image: registry.cn-hangzhou.aliyuncs.com/bigops-repo1/jenkins-demo:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
