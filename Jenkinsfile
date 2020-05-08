@@ -21,7 +21,9 @@ node ('master') {
       
         echo "5. Deploy Stage"
 		withKubeConfig([credentialsId: 'eb583be7-8a4a-404f-8d04-d2b65a32e607', serverUrl: 'https://172.31.51.143:6443']) {
-      sh 'kubectl apply -f deployment/service.yaml'
+        sh 'kubectl apply -f deployment/deployment.yaml'
+        sh 'kubectl apply -f deployment/service.yaml'
+			
     }
       
        
